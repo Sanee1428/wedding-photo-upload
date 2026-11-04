@@ -1,0 +1,6 @@
+links.txt
+*links*.txt
+qr-cards.pdf
+*.pdf
+node_modules/
+.DS_Store

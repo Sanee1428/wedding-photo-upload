@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#7a1f2b">
+  <title>Share Your Photos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow" id="eventTitle">&nbsp;</p>
+    <h1 id="couple">&nbsp;</h1>
+    <p class="tagline" id="tagline"></p>
+    <div class="ornament" aria-hidden="true"><span></span>✦<span></span></div>
+  </header>
+
+  <main>
+    <!-- Loading -->
+    <section class="card" id="screen-loading">
+      <div class="spinner" aria-hidden="true"></div>
+      <p class="center muted">Opening…</p>
+    </section>
+
+    <!-- Message (invalid link, closed, etc.) -->
+    <section class="card" id="screen-message" hidden>
+      <h2 id="msgTitle"></h2>
+      <p id="msgText" class="muted"></p>
+    </section>
+
+    <!-- PIN -->
+    <section class="card" id="screen-pin" hidden>
+      <h2>Enter the PIN</h2>
+      <p class="muted">You'll find it printed on your table card.</p>
+      <label class="field">
+        <span class="sr">PIN</span>
+        <input id="pinInput" type="text" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="PIN">
+      </label>
+      <p class="error" id="pinError" role="alert"></p>
+      <button class="btn primary" id="pinBtn" type="button">Continue</button>
+    </section>
+
+    <!-- Name -->
+    <section class="card" id="screen-name" hidden>
+      <h2>What's your name?</h2>
+      <p class="muted">Your photos will be saved in a folder with your name.</p>
+      <label class="field">
+        <span class="sr">Your name</span>
+        <input id="nameInput" type="text" autocomplete="name" maxlength="40" placeholder="e.g. Ravi Kumar" enterkeyhint="go">
+      </label>
+      <p class="error" id="nameError" role="alert"></p>
+      <button class="btn primary" id="nameBtn" type="button">Continue</button>
+    </section>
+
+    <!-- Name already exists -->
+    <section class="card" id="screen-confirm" hidden>
+      <h2>This name is already here</h2>
+      <p>A folder named <strong id="confirmName"></strong> already exists for <span id="confirmEvent"></span>.</p>
+      <p class="muted">Is that you? Choose "Yes" to add more photos to your folder.</p>
+      <button class="btn primary" id="confirmYes" type="button">Yes, that's me</button>
+      <button class="btn ghost" id="confirmNo" type="button">No, I'll use a different name</button>
+    </section>
+
+    <!-- Upload -->
+    <section class="card" id="screen-upload" hidden>
+      <div class="hello">
+        <p>Hi, <strong id="helloName"></strong></p>
+        <button class="link" id="changeName" type="button">Not you?</button>
+      </div>
+
+      <label class="picker" id="pickerLabel">
+        <input id="fileInput" type="file" multiple accept="image/*,video/*,.heic,.heif">
+        <span class="picker-icon" aria-hidden="true">＋</span>
+        <span class="picker-text">Choose photos &amp; videos</span>
+        <span class="picker-sub">from your gallery</span>
+      </label>
+
+      <div id="summary" class="summary" hidden>
+        <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+        <p id="summaryText" class="muted"></p>
+      </div>
+
+      <ul class="files" id="fileList"></ul>
+
+      <button class="btn primary" id="uploadBtn" type="button" hidden>Upload</button>
+      <button class="btn ghost" id="retryBtn" type="button" hidden>Try failed ones again</button>
+      <p class="keepopen" id="keepOpen" hidden>Please keep this page open until uploads finish.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Photos go only to the family's private folder. Nobody else can see them.</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
